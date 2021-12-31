@@ -8,9 +8,7 @@ const repositoryInfo = {
 }
 
 interface Repository {
-    name:string;
-    description: string;
-    html_url: string;
+    image:string;
 }
 
 export function RepositoryList(){
@@ -18,7 +16,7 @@ export function RepositoryList(){
     const [repositories, setRepositories] = useState<Repository[]>([])
 
     useEffect(() => {
-        fetch('https://api.github.com/orgs/rocketseat/repos')
+        fetch('https://artesanato.plano-b.com/admin/conteudo/@type/Person/@pp/10?format=json')
         .then(response => response.json())
         .then(data => setRepositories(data))
     }, [])
@@ -28,7 +26,7 @@ export function RepositoryList(){
         <h1>Lista de Repositórios</h1>
         <ul>
             {repositories.map(repository => {
-                return <RepositoryItem key={repository.name} repository={repository} />
+                return <RepositoryItem key={repository.image} repository={repository} />
                 }
               )
             }
